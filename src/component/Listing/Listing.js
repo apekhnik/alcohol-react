@@ -1,11 +1,15 @@
 import React from 'react'
 
-const Listing = ({ingridients}) =>{
+const Listing = ({title,ingridients}) =>{
+    console.log(ingridients)
     return(
         <div>
+            <h4>{title}</h4>
+            <ul>
             {ingridients.map((item, index)=>{
-        return <p>{index+1} {item}</p>
+        return <li>{index+1} {item}</li>
         })}
+            </ul>
         </div>
     )
 }

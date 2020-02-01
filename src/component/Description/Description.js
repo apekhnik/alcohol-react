@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Description = ({alcoholic}) => <span>{alcoholic}</span>
+const Description = ({descr}) => <span>Glass: {descr}</span>
 
 export default Description
