@@ -9,12 +9,12 @@ const Visual = ({title_ingridients,ingridients, glass, src}) =>{
         <div className='visual'>
             <div className="visual_item">
                 <Pictire src={src}/>
+                <Description descr={glass}/>
             </div>
             <div className="visual_item">
                 <Listing 
                     title={title_ingridients}
                     ingridients={ingridients}/>
-                <Description descr={glass}/>
             </div>
         </div>
     )

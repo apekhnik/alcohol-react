@@ -9,10 +9,9 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingridients}) => {
 
     return(
         <div className='coctail'>
-            <Title name={name} description={alcoholic}/>
+            <Title name={name} 
+            description={alcoholic}/>
             <Visual
-                name={name}
-                alcoholic={alcoholic}
                 src={src}
                 title_ingridients='Ingredients'
                 ingridients={ingridients}
@@ -21,6 +20,7 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingridients}) => {
 
 
             <Instructions
+                title='Instruction:'
                 instruction={instruction}
             />
         </div>

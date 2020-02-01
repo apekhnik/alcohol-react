@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Title = ({name, alcoholic}) => {
+const Title = ({name, description}) => {
+    
     return(
         <div className="title">
             <h2>{name}</h2>
-            <span>{alcoholic}</span>
+            <span>{description}</span>
         </div>
     )
 }
