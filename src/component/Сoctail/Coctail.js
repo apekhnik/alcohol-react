@@ -6,6 +6,7 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingridients}) => {
         <div>
             <h2>{name}</h2>
             <h3>{alcoholic}</h3>
+            <img src={src} alt=""/>
         </div>
     )
 }

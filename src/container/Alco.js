@@ -18,18 +18,22 @@ const Alco = () => {
         setRandom(response.drinks[0])
         setLoading(false)
     }
-    const ingridient = []
+    const getIngredient = (coctail) => {
+        const ingridient = []
     Object.entries(random).filter((item)=>{
 
         if(item[0].substr(0,13) === 'strIngredient' && item[1] != null) {
             ingridient.push(item[1])
         }
         // return item[0].substr(0,13) === 'strIngredient' && item[1] != null
-      
+     
     })
-    console.log(ingridient);
+    return ingridient
+    }
+    const ingridient = getIngredient(random)
+
     console.log(random);
-    console.log(ingridient);
+
     if(loading){
         return <Loader/>
     }
