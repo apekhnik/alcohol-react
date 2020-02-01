@@ -24,7 +24,7 @@ const Alco = () => {
         if(item[0].substr(0,13) === 'strIngredient' && item[1] != null) {
             ingridient.push(item[1])
         }
-        return item[0].substr(0,13) === 'strIngredient' && item[1] != null
+        // return item[0].substr(0,13) === 'strIngredient' && item[1] != null
       
     })
     console.log(ingridient);
