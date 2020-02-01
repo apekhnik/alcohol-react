@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import Loader from '../component/Loader/Loader'
+import Coctail from '../component/Сoctail/Coctail'
 const toJSON = response => response.json()
 
 const Alco = () => {
@@ -17,14 +18,31 @@ const Alco = () => {
         setRandom(response.drinks[0])
         setLoading(false)
     }
+    const ingridient = []
+    Object.entries(random).filter((item)=>{
+
+        if(item[0].substr(0,13) === 'strIngredient' && item[1] != null) {
+            ingridient.push(item[1])
+        }
+        return item[0].substr(0,13) === 'strIngredient' && item[1] != null
+      
+    })
+    console.log(ingridient);
     console.log(random);
+    console.log(ingridient);
     if(loading){
         return <Loader/>
     }
     return(
         <div>   
-                <h2>{random.strDrink}</h2>
-                <img src={random.strDrinkThumb} alt=""/>
+                <Coctail
+                    src={random.strDrinkThumb}
+                    name={random.strDrink}
+                    alcoholic={random.strAlcoholic}
+                    glass={random.strGlass}
+                    instruction={random.strInstructions}
+                    ingridients={ingridient}
+                />
         </div>
     )
 }
