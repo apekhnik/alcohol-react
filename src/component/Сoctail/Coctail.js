@@ -9,8 +9,8 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingridients}) => {
             <span>{alcoholic}</span>
             <img src={src} alt=""/>
             <div>
-    {ingridients.map(item=>{
-         return <p>{item}</p>
+    {ingridients.map((item, index)=>{
+        return <p>{index}{item}</p>
     })}
             </div>
         </div>
