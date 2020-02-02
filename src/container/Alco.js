@@ -13,10 +13,15 @@ const Alco = () => {
         setLoading(true)
         const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
                         .then(toJSON)
-
+        const response1 = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute')
+                        .then(toJSON)
+        const response2 = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Lemon_Drop')
+                        .then(toJSON)
+        console.log(response1)
+        console.log(response2)
         console.log(response.drinks[0])
         setRandom(response.drinks[0])
-        setLoading(false)
+        setTimeout(()=>{setLoading(false)}, 1500)
     }
     const getIngredient = (coctail) => {
         const ingridient = []

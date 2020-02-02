@@ -7,7 +7,7 @@ const Listing = ({title,ingridients}) =>{
             <h4>{title}</h4>
             <ul>
             {ingridients.map((item, index)=>{
-        return <li>{index+1}. {item}</li>
+        return <li key={index+2}>{index+1}. {item}</li>
         })}
             </ul>
         </div>

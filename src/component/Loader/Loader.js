@@ -1,5 +1,5 @@
 import React from 'react'
-
-const Loader = () => (<div><h1>rere</h1></div> )
+import './Loader.css'
+const Loader = () => (<div className="lds-ripple"><div></div><div></div></div> )
 
 export default Loader
