@@ -1,0 +1,7 @@
+.container {
+    display: flex;
+
+}
+.container-item {
+    border: 2px solid red;
+}
