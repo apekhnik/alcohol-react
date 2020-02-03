@@ -11,7 +11,9 @@ const Alco = () => {
     const [loading, setLoading] = useState(false)
     const [ingredientList, setIngredientLis] = useState([])
     const [ingredientSearhcResult, setIngredientSearhcResult] = useState([])
-
+    const [searchIngredientInput, setSearchIngredientInput] = useState('')
+    console.log(ingredientSearhcResult, 'search ingridient')
+    console.log(ingredientList, 'list of ingredient')
     useEffect(()=>{
         getRandomCoctail()
         getIngredientList()
@@ -26,7 +28,7 @@ const Alco = () => {
     const searchBy = async (search='gin') => {
         const searchResult = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${search}`)
                             .then(toJSON)
-        setIngredientSearhcResult(searchResult)
+        setIngredientSearhcResult(searchResult.ingredients[0])
     }
     const getRandomCoctail = async () => {
         setLoading(true)
@@ -44,7 +46,7 @@ const Alco = () => {
         console.log(ingredientList, 'List of ingredient')
         console.log(response3, 'Cocktail_glass')
         console.log(glassList, 'List of glass');
-        console.log(response.drinks[0])
+        console.log(response)
         setRandom(response.drinks[0])
         setTimeout(()=>{setLoading(false)}, 1500)
     }
@@ -59,6 +61,17 @@ const Alco = () => {
      
     })
     return ingridient
+    }
+    const searchHandler = ({ key }) => {
+        if (key === 'Enter') {
+            searchBy(searchIngredientInput)
+        }
+    }
+    const ingredientInputChangeHandler  = (event) => {
+        setSearchIngredientInput(event.target.value)
+    }
+    const coctailInputChangeHandler = e => {
+
     }
     const ingridient = getIngredient(random)
 
@@ -80,9 +93,15 @@ const Alco = () => {
                                     ingridients={ingridient}
                                 />
                                 <CoctailMinimize
-                                    name="name"
+                                    name={ingredientSearhcResult.strIngredient}
                                     img
-                                    description="descr descr descr descr"
+                                    description={ingredientSearhcResult.strDescription}
+                                />
+                        </ContainerItemComp>
+                        <ContainerItemComp>
+                                <input type="text" 
+                                onChange={ingredientInputChangeHandler}
+                                onKeyPress={searchHandler}
                                 />
                         </ContainerItemComp>
                 </ContainerComp>
