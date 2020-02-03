@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CoctailMinimize = ( ) =>{
+const CoctailMinimize = ({name, description, img}) =>{
     return(
         <div></div>
     )

@@ -17,7 +17,7 @@ const Alco = () => {
                         .then(toJSON)
         const response3 = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass')
                         .then(toJSON)
-        const glassList = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list')
+        const glassList = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
                         .then(toJSON)
         const responseId = await fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007')
                         .then(toJSON)
@@ -49,7 +49,7 @@ const Alco = () => {
         return <Loader/>
     }
     return(
-        <div>   
+        <div className="aplication">   
                 <Coctail
                     src={random.strDrinkThumb}
                     name={random.strDrink}
