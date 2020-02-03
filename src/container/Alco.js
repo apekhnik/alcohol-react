@@ -19,11 +19,10 @@ const Alco = () => {
         getIngredientList()
         searchBy()
     },[])
-    const getIngredientList = async () =>{
+    const getIngredientList = async () => {
         const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
                         .then(toJSON)
-        setIngredientLis(ingList)
-        console.log(ingList.drinks)
+        setIngredientLis(ingList.drinks)
     }
     const searchBy = async (search='gin') => {
         const searchResult = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${search}`)
@@ -75,7 +74,7 @@ const Alco = () => {
     }
     const ingridient = getIngredient(random)
 
-    console.log(random);
+    console.log(ingredientList);
 
     if(loading){
         return <Loader/>
@@ -103,6 +102,10 @@ const Alco = () => {
                                 onChange={ingredientInputChangeHandler}
                                 onKeyPress={searchHandler}
                                 />
+                                {ingredientList.map((item)=>{
+                                return <p>{item.strIngredient1}</p>
+                                    
+                                })}
                         </ContainerItemComp>
                 </ContainerComp>
         </div>
