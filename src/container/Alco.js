@@ -13,7 +13,7 @@ const Alco = () => {
     const [ingredientSearhcResult, setIngredientSearhcResult] = useState([])
     const [searchIngredientInput, setSearchIngredientInput] = useState('')
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
-    
+    const [error, setError] = useState(false)
     
     
     console.log(ingredientSearhcResult, 'search ingridient')
@@ -60,6 +60,7 @@ const Alco = () => {
     const searchIngredientHandler = ({ key }) => {
         if (key === 'Enter') {
             searchIngredient(searchIngredientInput)
+            setSearchIngredientInput('')
         }
     }
     const ingredientInputChangeHandler  = (event) => {
@@ -67,26 +68,26 @@ const Alco = () => {
     }
     const coctailInputChangeHandler = e => {
         setSearchCoctailInput(e.target.value)
-        console.log(searchCoctailInput)
     }
     const searchCoctailHandler = ({ key }) => {
         if (key === 'Enter') {
             searchCoctail(searchCoctailInput)
+            setSearchCoctailInput('')
         }
     }
     const searchCoctail = async (coctail) =>{
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctail}`)
                                 .then(toJSON)
-            console.log(response.drinks[0])
-            setRandom(response.drinks[0])
+        setRandom(response.drinks[0])
+        setError(false)
         }catch(e){
-            console.log(e);
+            setError(true)
+
         }
     }
     const ingridient = getIngredient(random)
 
-    console.log(ingredientList);
 
     if(loading){
         return <Loader/>
@@ -99,6 +100,7 @@ const Alco = () => {
                                         <input type="text" 
                                             onChange={coctailInputChangeHandler}
                                             onKeyPress={searchCoctailHandler}
+                                            value={searchCoctailInput}
                                         />
                                         
                                 </div>
@@ -111,6 +113,7 @@ const Alco = () => {
                                     glass={random.strGlass}
                                     instruction={random.strInstructions}
                                     ingridients={ingridient}
+                                    error={error}
                                 />
                                 <CoctailMinimize
                                     name={ingredientSearhcResult.strIngredient}
@@ -123,6 +126,7 @@ const Alco = () => {
                                         <input type="text" 
                                         onChange={ingredientInputChangeHandler}
                                         onKeyPress={searchIngredientHandler}
+                                        value={searchIngredientInput}
                                         />
                                         {ingredientList.map((item)=>{
                                         return <p onClick={()=>{searchIngredient(item.strIngredient1)}}>{item.strIngredient1}</p>
