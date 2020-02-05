@@ -35,23 +35,15 @@ const Alco = () => {
     }
     const getRandomCoctail = async () => {
         setLoading(true)
+       try{
         const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
                         .then(toJSON)
-        // const ingredientList = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?i=gin')
-        //                 .then(toJSON)
-        // const response3 = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass')
-        //                 .then(toJSON)
-        // const glassList = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
-        //                 .then(toJSON)
-        // const responseId = await fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007')
-        //                 .then(toJSON)
-        // console.log(responseId, 'byID');
-        // console.log(ingredientList, 'List of ingredient')
-        // console.log(response3, 'Cocktail_glass')
-        // console.log(glassList, 'List of glass');
-        console.log(response)
-        setRandom(response.drinks[0])
-        setTimeout(()=>{setLoading(false)}, 1500)
+            console.log(response)
+            setRandom(response.drinks[0])
+            setTimeout(()=>{setLoading(false)}, 1500)
+       }catch(e){
+            console.log(e);
+       }
     }
     const getIngredient = (coctail) => {
         const ingridient = []
@@ -79,14 +71,18 @@ const Alco = () => {
     }
     const searchCoctailHandler = ({ key }) => {
         if (key === 'Enter') {
-            searchCoctail()
+            searchCoctail(searchCoctailInput)
         }
     }
-    const searchCoctail = async () =>{
-        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    const searchCoctail = async (coctail) =>{
+        try{
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctail}`)
                                 .then(toJSON)
         console.log(response.drinks[0])
         setRandom(response.drinks[0])
+        }catch(e){
+            console.log(e);
+        }
     }
     const ingridient = getIngredient(random)
 
