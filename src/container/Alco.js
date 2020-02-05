@@ -78,8 +78,8 @@ const Alco = () => {
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctail}`)
                                 .then(toJSON)
-        console.log(response.drinks[0])
-        setRandom(response.drinks[0])
+            console.log(response.drinks[0])
+            setRandom(response.drinks[0])
         }catch(e){
             console.log(e);
         }
