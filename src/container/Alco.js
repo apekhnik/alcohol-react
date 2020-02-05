@@ -13,7 +13,7 @@ const Alco = () => {
     const [ingredientSearhcResult, setIngredientSearhcResult] = useState([])
     const [searchIngredientInput, setSearchIngredientInput] = useState('')
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
-    
+    const [error, setError] = useState(false)
     
     
     console.log(ingredientSearhcResult, 'search ingridient')
@@ -80,13 +80,15 @@ const Alco = () => {
                                 .then(toJSON)
         console.log(response.drinks[0])
         setRandom(response.drinks[0])
+        setError(false)
         }catch(e){
-            console.log(e);
+            console.log(random);
+            setError(true)
+            
         }
     }
     const ingridient = getIngredient(random)
 
-    console.log(ingredientList);
 
     if(loading){
         return <Loader/>
@@ -111,6 +113,7 @@ const Alco = () => {
                                     glass={random.strGlass}
                                     instruction={random.strInstructions}
                                     ingridients={ingridient}
+                                    error={error}
                                 />
                                 <CoctailMinimize
                                     name={ingredientSearhcResult.strIngredient}

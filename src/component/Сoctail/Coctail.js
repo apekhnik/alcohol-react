@@ -4,9 +4,16 @@ import Visual from '../Visual/Visual'
 import Instructions from '../Instructions/Instructions'
 import Title from '../Title/Title'
 
-const Coctail = ({src, name, alcoholic, glass, instruction, ingridients}) => {
+const Coctail = ({src, name, alcoholic, glass, instruction, ingridients, error}) => {
     
-
+    if(error) {
+        return (
+            <div className='coctail'>
+            <h1>jib,rf</h1>
+        </div>
+        )
+    }
+    console.log(error)
     return(
         <div className='coctail'>
             <Title name={name} 
