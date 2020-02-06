@@ -14,14 +14,14 @@ const Alco = () => {
     const [searchIngredientInput, setSearchIngredientInput] = useState('')
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
     const [error, setError] = useState(false)
+    const [coctailList, setCoctailList] = useState([])
     
-    
-    console.log(ingredientSearhcResult, 'search ingridient')
-    console.log(ingredientList, 'list of ingredient')
+
     useEffect(()=>{
         getRandomCoctail()
         getIngredientList()
         searchIngredient()
+        searchCoctailByIngredient('gin')
     },[])
     const getIngredientList = async () => {
         const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
@@ -86,9 +86,18 @@ const Alco = () => {
 
         }
     }
+    const searchCoctailByIngredient = async  (ingredient = 'Vodka') =>{
+        try{
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+                                .then(toJSON)
+            setCoctailList(response.drinks)
+        }catch(e){
+
+        }
+    }
     const ingridient = getIngredient(random)
 
-
+    
     if(loading){
         return <Loader/>
     }
@@ -102,7 +111,10 @@ const Alco = () => {
                                             onKeyPress={searchCoctailHandler}
                                             value={searchCoctailInput}
                                         />
-                                        
+                                        {coctailList.map((item, index)=>{
+                                            console.log(item)
+                                        return <p>{item.strDrink}</p>
+                                        })}
                                 </div>
                         </ContainerItemComp>
                         <ContainerItemComp>
