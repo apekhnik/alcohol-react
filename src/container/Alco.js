@@ -15,7 +15,7 @@ const Alco = () => {
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
     const [error, setError] = useState(false)
     const [coctailList, setCoctailList] = useState([])
-    
+    const [x, setX] = useState(false)
 
     useEffect(()=>{
         getRandomCoctail()
@@ -86,6 +86,10 @@ const Alco = () => {
 
         }
     }
+    const radioDeteckt = (e) => {
+        setX(true)
+        console.log(x)
+    }
     const searchCoctailByIngredient = async  (ingredient = 'Vodka') =>{
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
@@ -105,15 +109,35 @@ const Alco = () => {
         <div className="aplication">
                 <ContainerComp>
                         <ContainerItemComp>
-                                <div className="listing">
+                                <div className="ingredient-listing">
                                         <input type="text" 
                                             onChange={coctailInputChangeHandler}
                                             onKeyPress={searchCoctailHandler}
                                             value={searchCoctailInput}
                                         />
+                                        
+                                        <form onChange={()=>console.log()}>
+                                        <div>
+                                            <input type="radio" id="contactChoice1"
+                                            name="contact" value="email" 
+                                            onChange={radioDeteckt}
+                                            />
+                                            <label for="contactChoice1">Email</label>
+
+
+
+                                            <input type="radio" id="contactChoice3"
+                                            name="contact" value="mail" onChange={()=>{setX(false);console.log(x)}}/>
+                                            <label for="contactChoice3">Mail</label>
+                                        </div>
+                                        </form>        
+  
+
+                                   
+                                        
                                         {coctailList.map((item, index)=>{
-                                            console.log(item)
-                                        return <p>{item.strDrink}</p>
+                                            // console.log(item)
+                                        return <p onClick={()=>{searchCoctail(item.strDrink)}}>{item.strDrink}</p>
                                         })}
                                 </div>
                         </ContainerItemComp>
