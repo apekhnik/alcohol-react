@@ -169,7 +169,7 @@ const Alco = () => {
                                         value={searchIngredientInput}
                                         /> */}
                                         {ingredientList.map((item)=>{
-                                        return <p onClick={()=>{searchIngredient(item.strIngredient1);setSearchCoctailInput(item.strIngredient1)}}>{item.strIngredient1}</p>
+                                        return <p onClick={()=>{searchIngredient(item.strIngredient1);searchCoctailByIngredient(item.strIngredient1)}}>{item.strIngredient1}</p>
                                             
                                         })}
                                 </div>
