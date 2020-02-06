@@ -15,7 +15,7 @@ const Alco = () => {
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
     const [error, setError] = useState(false)
     const [coctailList, setCoctailList] = useState([])
-    const [x, setX] = useState(false)
+    const [searchOption, setSearchOption] = useState(true)
 
     useEffect(()=>{
         getRandomCoctail()
@@ -71,7 +71,7 @@ const Alco = () => {
     }
     const searchCoctailHandler = ({ key }) => {
         if (key === 'Enter') {
-            searchCoctail(searchCoctailInput)
+            finalCoctailSearch(searchCoctailInput)
             setSearchCoctailInput('')
         }
     }
@@ -81,26 +81,30 @@ const Alco = () => {
                                 .then(toJSON)
         setRandom(response.drinks[0])
         setError(false)
+        console.log('by name')
         }catch(e){
             setError(true)
 
         }
     }
     const radioDeteckt = (e) => {
-        setX(true)
-        console.log(x)
+        setSearchOption(true)
+        console.log('name')
     }
     const searchCoctailByIngredient = async  (ingredient = 'Vodka') =>{
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
                                 .then(toJSON)
             setCoctailList(response.drinks)
+            console.log('by igredient')
         }catch(e){
 
         }
     }
     const ingridient = getIngredient(random)
-
+    const finalCoctailSearch = (input)=> {
+        searchOption ? searchCoctailByIngredient(input) : searchCoctail(input)
+    }
     
     if(loading){
         return <Loader/>
@@ -116,19 +120,19 @@ const Alco = () => {
                                             value={searchCoctailInput}
                                         />
                                         
-                                        <form onChange={()=>console.log()}>
+                                        <form>
                                         <div>
                                             <input type="radio" id="contactChoice1"
-                                            name="contact" value="email" 
+                                            name="contact" value="email" checked={searchOption}
                                             onChange={radioDeteckt}
                                             />
-                                            <label for="contactChoice1">Email</label>
+                                            <label for="contactChoice1">by ingredient</label>
 
 
 
                                             <input type="radio" id="contactChoice3"
-                                            name="contact" value="mail" onChange={()=>{setX(false);console.log(x)}}/>
-                                            <label for="contactChoice3">Mail</label>
+                                            checked={!searchOption} value="mail" onChange={()=>{setSearchOption(false);console.log('ingredient')}}/>
+                                            <label for="contactChoice3">by name </label>
                                         </div>
                                         </form>        
   
@@ -159,13 +163,13 @@ const Alco = () => {
                         </ContainerItemComp>
                         <ContainerItemComp>
                                 <div className="ingredient-listing">
-                                        <input type="text" 
+                                        {/* <input type="text" 
                                         onChange={ingredientInputChangeHandler}
                                         onKeyPress={searchIngredientHandler}
                                         value={searchIngredientInput}
-                                        />
+                                        /> */}
                                         {ingredientList.map((item)=>{
-                                        return <p onClick={()=>{searchIngredient(item.strIngredient1)}}>{item.strIngredient1}</p>
+                                        return <p onClick={()=>{searchIngredient(item.strIngredient1);setSearchCoctailInput(item.strIngredient1)}}>{item.strIngredient1}</p>
                                             
                                         })}
                                 </div>
