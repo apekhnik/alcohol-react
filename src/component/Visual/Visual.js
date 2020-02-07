@@ -1,9 +1,8 @@
 import React from 'react'
-import Title from '../Title/Title'
 import Description from '../Description/Description'
 import Pictire from '../Picture/Picture'
 import Listing from '../Listing/Listing'
-const Visual = ({title_ingridients,ingridients, glass, src}) =>{
+const Visual = ({title_ingridients,ingredients, glass, src}) =>{
     console.log(glass)
     return (
         <div className='visual'>
@@ -14,7 +13,7 @@ const Visual = ({title_ingridients,ingridients, glass, src}) =>{
             <div className="visual_item">
                 <Listing 
                     title={title_ingridients}
-                    ingridients={ingridients}/>
+                    ingredients={ingredients}/>
             </div>
         </div>
     )
