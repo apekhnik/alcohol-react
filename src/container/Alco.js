@@ -7,6 +7,7 @@ import Input from '../component/Input/Input'
 import ContainerComp from './ContainerComp/ContainerComp'
 import Form from '../component/Form/Form'
 import RadioButton from '../component/RadioButton/RadioButton'
+import ListingEl from '../component/ListingEl/ListingEl'
 const toJSON = response => response.json()
 
 const Alco = () => {
@@ -83,9 +84,11 @@ const Alco = () => {
     }
     const searchCoctailByIngredient = async  (ingredient = 'Vodka') =>{
         try{
+            
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
                                 .then(toJSON)
             setCoctailList(response.drinks)
+            
         }catch(e){
 
         }
@@ -123,12 +126,11 @@ const Alco = () => {
                                             />
                                         </Form>
 
-                                   
-                                        
-                                        {coctailList.map((item, index)=>{
-                                            // console.log(item)
-                                        return <p onClick={()=>{searchCoctail(item.strDrink)}}>{item.strDrink}</p>
-                                        })}
+                                        <ListingEl 
+                                            listing={coctailList}
+                                            prefix='strDrink'
+                                            onClick={searchCoctail}
+                                        />
                                 </div>
                         </ContainerItemComp>
                         <ContainerItemComp>
@@ -138,7 +140,7 @@ const Alco = () => {
                                     alcoholic={random.strAlcoholic}
                                     glass={random.strGlass}
                                     instruction={random.strInstructions}
-                                    ingridients={ingridient}
+                                    ingredients={ingridient}
                                     error={error}
                                 />
                                 <CoctailMinimize
@@ -149,15 +151,15 @@ const Alco = () => {
                         </ContainerItemComp>
                         <ContainerItemComp>
                                 <div className="ingredient-listing">
-                                        {/* <input type="text" 
-                                        onChange={ingredientInputChangeHandler}
-                                        onKeyPress={searchIngredientHandler}
-                                        value={searchIngredientInput}
-                                        /> */}
-                                        {ingredientList.map((item)=>{
+                                        {/* {ingredientList.map((item)=>{
                                         return <p onClick={()=>{searchIngredient(item.strIngredient1);searchCoctailByIngredient(item.strIngredient1)}}>{item.strIngredient1}</p>
                                             
-                                        })}
+                                        })} */}
+                                        <ListingEl 
+                                            listing={ingredientList}
+                                            prefix='strIngredient'
+                                            onClick={searchCoctailByIngredient}
+                                        />
                                 </div>
                         </ContainerItemComp>
                 </ContainerComp>

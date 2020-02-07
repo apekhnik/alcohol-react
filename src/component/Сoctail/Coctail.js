@@ -4,7 +4,7 @@ import Visual from '../Visual/Visual'
 import Instructions from '../Instructions/Instructions'
 import Title from '../Title/Title'
 
-const Coctail = ({src, name, alcoholic, glass, instruction, ingridients, error}) => {
+const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error}) => {
     
     if(error) {
         return (
@@ -21,7 +21,7 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingridients, error})
             <Visual
                 src={src}
                 title_ingridients='Ingredients'
-                ingridients={ingridients}
+                ingredients={ingredients}
                 glass={glass}
             />
 
