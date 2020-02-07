@@ -106,7 +106,6 @@ const Alco = () => {
         <div className="aplication">
                 <ContainerComp>
                         <ContainerItemComp>
-                                <div className="ingredient-listing">
                                         <Input
                                                 onChange={coctailInputChangeHandler}
                                                 onKeyPress={searchCoctailHandler}
@@ -125,13 +124,14 @@ const Alco = () => {
                                                 onChange={()=>{setSearchOption(false)}}
                                             />
                                         </Form>
-
+                                
                                         <ListingEl 
+                                            className="ingredient-listing"
                                             listing={coctailList}
                                             prefix='strDrink'
                                             onClick={searchCoctail}
                                         />
-                                </div>
+                                
                         </ContainerItemComp>
                         <ContainerItemComp>
                                 <Coctail
@@ -150,17 +150,12 @@ const Alco = () => {
                                 />
                         </ContainerItemComp>
                         <ContainerItemComp>
-                                <div className="ingredient-listing">
-                                        {/* {ingredientList.map((item)=>{
-                                        return <p onClick={()=>{searchIngredient(item.strIngredient1);searchCoctailByIngredient(item.strIngredient1)}}>{item.strIngredient1}</p>
-                                            
-                                        })} */}
                                         <ListingEl 
+                                            className="ingredient-listing"
                                             listing={ingredientList}
                                             prefix='strIngredient'
                                             onClick={searchCoctailByIngredient}
                                         />
-                                </div>
                         </ContainerItemComp>
                 </ContainerComp>
         </div>
