@@ -3,6 +3,7 @@ import Loader from '../component/Loader/Loader'
 import Coctail from '../component/Сoctail/Coctail'
 import CoctailMinimize from '../component/Сoctail/CoctailMinimize'
 import ContainerItemComp from '../container/ContainerItemComp/ContainerItemComp'
+import Input from '../component/Input/Input'
 import ContainerComp from './ContainerComp/ContainerComp'
 const toJSON = response => response.json()
 
@@ -114,12 +115,11 @@ const Alco = () => {
                 <ContainerComp>
                         <ContainerItemComp>
                                 <div className="ingredient-listing">
-                                        <input type="text" 
+                                        <Input
                                             onChange={coctailInputChangeHandler}
                                             onKeyPress={searchCoctailHandler}
                                             value={searchCoctailInput}
                                         />
-                                        
                                         <form>
                                         <div>
                                             <input type="radio" id="contactChoice1"
