@@ -5,6 +5,8 @@ import CoctailMinimize from '../component/Сoctail/CoctailMinimize'
 import ContainerItemComp from '../container/ContainerItemComp/ContainerItemComp'
 import Input from '../component/Input/Input'
 import ContainerComp from './ContainerComp/ContainerComp'
+import Form from '../component/Form/Form'
+import RadioButton from '../component/RadioButton/RadioButton'
 const toJSON = response => response.json()
 
 const Alco = () => {
@@ -58,15 +60,7 @@ const Alco = () => {
     })
     return ingridient
     }
-    const searchIngredientHandler = ({ key }) => {
-        if (key === 'Enter') {
-            searchIngredient(searchIngredientInput)
-            setSearchIngredientInput('')
-        }
-    }
-    const ingredientInputChangeHandler  = (event) => {
-        setSearchIngredientInput(event.target.value)
-    }
+    
     const coctailInputChangeHandler = e => {
         setSearchCoctailInput(e.target.value)
     }
@@ -82,27 +76,22 @@ const Alco = () => {
                                 .then(toJSON)
         setRandom(response.drinks[0])
         setError(false)
-        console.log('by name')
         }catch(e){
             setError(true)
 
         }
-    }
-    const radioDeteckt = (e) => {
-        setSearchOption(true)
-        console.log('name')
     }
     const searchCoctailByIngredient = async  (ingredient = 'Vodka') =>{
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
                                 .then(toJSON)
             setCoctailList(response.drinks)
-            console.log('by igredient')
         }catch(e){
 
         }
     }
     const ingridient = getIngredient(random)
+    const inputPlaceholder =  searchOption ? 'Search coctail by ingredient' : 'Search coctail by name'
     const finalCoctailSearch = (input)=> {
         searchOption ? searchCoctailByIngredient(input) : searchCoctail(input)
     }
@@ -116,26 +105,23 @@ const Alco = () => {
                         <ContainerItemComp>
                                 <div className="ingredient-listing">
                                         <Input
-                                            onChange={coctailInputChangeHandler}
-                                            onKeyPress={searchCoctailHandler}
-                                            value={searchCoctailInput}
-                                        />
-                                        <form>
-                                        <div>
-                                            <input type="radio" id="contactChoice1"
-                                            name="contact" value="email" checked={searchOption}
-                                            onChange={radioDeteckt}
+                                                onChange={coctailInputChangeHandler}
+                                                onKeyPress={searchCoctailHandler}
+                                                value={searchCoctailInput}
+                                                placeholder={inputPlaceholder}
                                             />
-                                            <label for="contactChoice1">by ingredient</label>
-
-
-
-                                            <input type="radio" id="contactChoice3"
-                                            checked={!searchOption} value="mail" onChange={()=>{setSearchOption(false);console.log('ingredient')}}/>
-                                            <label for="contactChoice3">by name </label>
-                                        </div>
-                                        </form>        
-  
+                                        <Form>
+                                            <RadioButton
+                                                label="ingredient"
+                                                checked={searchOption}
+                                                onChange={()=>{setSearchOption(true)}}
+                                            />
+                                            <RadioButton
+                                                label='name'
+                                                checked={!searchOption}
+                                                onChange={()=>{setSearchOption(false)}}
+                                            />
+                                        </Form>
 
                                    
                                         

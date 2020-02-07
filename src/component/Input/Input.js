@@ -1,14 +1,17 @@
 import React from 'react'
-
-const Input = ({onChange, onKeyPress, value, type='text'}) => {
+import './input.css'
+const Input = ({onChange, onKeyPress, value, type='text', checked, id, placeholder}) => {
     return(
-        <div>
-            <input type={type} 
-                    onChange={onChange}
-                    onKeyPress={onKeyPress}
-                    value={value}
-            />
-        </div>
+        <input 
+        className="input"
+        type={type} 
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+        value={value}
+        checked={checked}
+        id={id}
+        placeholder={placeholder}
+        />
     )
 }
 export default Input
