@@ -121,6 +121,7 @@ const Alco = () => {
                                         <Search
                                             radiodata={RadioData}
                                             inputdata={InputData}
+                                            error={error}
                                         />
                                         <ListingEl 
                                             className="ingredient-listing"

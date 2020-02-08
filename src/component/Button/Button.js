@@ -7,7 +7,8 @@ const Button = ({text, onClick}) => {
         className='button'
         >
             <button onClick={onClick}>
-                <img src='http://cdn.onlinewebfonts.com/svg/img_534826.png' alt="q"/>
+                {/* <img src='http://cdn.onlinewebfonts.com/svg/img_534826.png' alt="q"/> */}
+                FIND
             </button>
         </div>
     )

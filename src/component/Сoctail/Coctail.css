@@ -48,8 +48,4 @@ ul{
     list-style-type: none;
     text-align: left;
 }
-.ingredient-listing {
-    max-height: 500px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
+

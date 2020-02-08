@@ -4,7 +4,7 @@ import Input from '../Input/Input'
 import Form from '../Form/Form'
 import Button from '../Button/Button'
 import './Search.css'
-const Search = ({radiodata,inputdata}) => {
+const Search = ({radiodata,inputdata, error}) => {
 
     return(
         <div className='search'>
@@ -13,10 +13,9 @@ const Search = ({radiodata,inputdata}) => {
                 onKeyPress={inputdata.onKeyPress}
                 value={inputdata.value}
                 placeholder={inputdata.placeholder}
+                error={error}
             />
-            <Button
-                onClick={()=>{inputdata.onClick(inputdata.value);inputdata.clear('')}}
-            />
+            
             <Form>
             {radiodata.map((item)=>{
                 return <RadioButton
@@ -25,6 +24,9 @@ const Search = ({radiodata,inputdata}) => {
                             onChange={item.onChange}
                         />
             })}
+            <Button
+                onClick={()=>{inputdata.onClick(inputdata.value);inputdata.clear('')}}
+            />
             </Form>
         </div>
     )
