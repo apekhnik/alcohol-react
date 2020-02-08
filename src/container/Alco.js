@@ -1,21 +1,20 @@
 import React,{useState, useEffect} from 'react'
 import Loader from '../component/Loader/Loader'
 import Coctail from '../component/Сoctail/Coctail'
-import CoctailMinimize from '../component/Сoctail/CoctailMinimize'
+import Button from '../component/Button/Button'
 import ContainerItemComp from '../container/ContainerItemComp/ContainerItemComp'
 import Input from '../component/Input/Input'
 import ContainerComp from './ContainerComp/ContainerComp'
 import Form from '../component/Form/Form'
 import RadioButton from '../component/RadioButton/RadioButton'
 import ListingEl from '../component/ListingEl/ListingEl'
+import Search from '../component/Search/Search'
 const toJSON = response => response.json()
 
 const Alco = () => {
     const [random, setRandom] = useState({})
     const [loading, setLoading] = useState(false)
     const [ingredientList, setIngredientLis] = useState([])
-    const [ingredientSearhcResult, setIngredientSearhcResult] = useState([])
-    const [searchIngredientInput, setSearchIngredientInput] = useState('')
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
     const [error, setError] = useState(false)
     const [coctailList, setCoctailList] = useState([])
@@ -24,7 +23,6 @@ const Alco = () => {
     useEffect(()=>{
         getRandomCoctail()
         getIngredientList()
-        searchIngredient()
         searchCoctailByIngredient('gin')
     },[])
     const getIngredientList = async () => {
@@ -32,11 +30,7 @@ const Alco = () => {
                         .then(toJSON)
         setIngredientLis(ingList.drinks)
     }
-    const searchIngredient = async (search='gin') => {
-        const searchResult = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${search}`)
-                            .then(toJSON)
-        setIngredientSearhcResult(searchResult.ingredients[0])
-    }
+
     const getRandomCoctail = async () => {
         setLoading(true)
        try{
@@ -102,16 +96,32 @@ const Alco = () => {
     if(loading){
         return <Loader/>
     }
+    const g =[
+        {
+            label: 'ingredient',
+            checked: searchOption,
+            onChange: ()=>{setSearchOption(true)}
+        },
+        {
+            label: 'name',
+            checked: !searchOption,
+            onChange: ()=>{setSearchOption(false)}
+        }
+    ]
     return(
-        <div className="aplication">
+        <div className="application">
                 <ContainerComp>
                         <ContainerItemComp>
+                            <Search
+                             data={g}
+                            />
                                         <Input
                                                 onChange={coctailInputChangeHandler}
                                                 onKeyPress={searchCoctailHandler}
                                                 value={searchCoctailInput}
                                                 placeholder={inputPlaceholder}
-                                            />
+                                        />
+                                        <Button text="qui"/>
                                         <Form>
                                             <RadioButton
                                                 label="ingredient"
@@ -133,7 +143,7 @@ const Alco = () => {
                                         />
                                 
                         </ContainerItemComp>
-                        <ContainerItemComp>
+                        <ContainerItemComp className={'container-item_center'}>
                                 <Coctail
                                     src={random.strDrinkThumb}
                                     name={random.strDrink}
@@ -143,11 +153,7 @@ const Alco = () => {
                                     ingredients={ingridient}
                                     error={error}
                                 />
-                                <CoctailMinimize
-                                    name={ingredientSearhcResult.strIngredient}
-                                    img
-                                    description={ingredientSearhcResult.strDescription}
-                                />
+                                
                         </ContainerItemComp>
                         <ContainerItemComp>
                                         <ListingEl 

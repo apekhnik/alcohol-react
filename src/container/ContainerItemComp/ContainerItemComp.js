@@ -1,8 +1,9 @@
 import React from 'react'
-
-const ContainerItemComp = ({children}) => {
+import classnames  from 'classnames'
+const ContainerItemComp = ({children, className}) => {
+    const classes = classnames('container-item', className);
     return(
-        <div className="container-item">
+        <div className={classes}>
             {children}
         </div>
     )

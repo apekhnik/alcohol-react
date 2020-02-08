@@ -1,7 +1,11 @@
 .container {
     display: flex;
+    justify-content: space-around;
 
 }
-.container-item {
-    width: 100%;
+/* .container-item {
+    
+} */
+.container-item_center {
+    max-width: 500px;
 }
