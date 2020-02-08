@@ -3,10 +3,13 @@ import './Button.css'
 
 const Button = ({text, onClick}) => {
     return(
-        <button 
-        onClick={onClick}
-        className=''
-        >{text}</button>
+        <div 
+        className='button'
+        >
+            <button onClick={onClick}>
+                <img src='http://cdn.onlinewebfonts.com/svg/img_534826.png' alt="q"/>
+            </button>
+        </div>
     )
 }
 export default Button

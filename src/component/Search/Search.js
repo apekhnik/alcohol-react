@@ -1,17 +1,31 @@
 import React from 'react'
 import RadioButton from '../RadioButton/RadioButton'
-const Search = ({data}) => {
-    console.log(data)
+import Input from '../Input/Input'
+import Form from '../Form/Form'
+import Button from '../Button/Button'
+import './Search.css'
+const Search = ({radiodata,inputdata}) => {
+
     return(
         <div className='search'>
-            {data.map((item)=>{
-                console.log(item)
+            <Input
+                onChange={inputdata.onChange}
+                onKeyPress={inputdata.onKeyPress}
+                value={inputdata.value}
+                placeholder={inputdata.placeholder}
+            />
+            <Button
+                onClick={()=>{inputdata.onClick(inputdata.value);inputdata.clear('')}}
+            />
+            <Form>
+            {radiodata.map((item)=>{
                 return <RadioButton
                             label={item.label}
                             checked={item.checked}
                             onChange={item.onChange}
                         />
             })}
+            </Form>
         </div>
     )
 }

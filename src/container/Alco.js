@@ -78,11 +78,9 @@ const Alco = () => {
     }
     const searchCoctailByIngredient = async  (ingredient = 'Vodka') =>{
         try{
-            
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
                                 .then(toJSON)
             setCoctailList(response.drinks)
-            
         }catch(e){
 
         }
@@ -92,11 +90,7 @@ const Alco = () => {
     const finalCoctailSearch = (input)=> {
         searchOption ? searchCoctailByIngredient(input) : searchCoctail(input)
     }
-    
-    if(loading){
-        return <Loader/>
-    }
-    const g =[
+    const RadioData = [
         {
             label: 'ingredient',
             checked: searchOption,
@@ -108,40 +102,32 @@ const Alco = () => {
             onChange: ()=>{setSearchOption(false)}
         }
     ]
+    const InputData = {
+        onChange: coctailInputChangeHandler,
+        onKeyPress:searchCoctailHandler,
+        value:searchCoctailInput,
+        placeholder: inputPlaceholder,
+        onClick: finalCoctailSearch,
+        clear: setSearchCoctailInput
+    }
+    if(loading){
+        return <Loader/>
+    }
+    
     return(
         <div className="application">
                 <ContainerComp>
                         <ContainerItemComp>
-                            <Search
-                             data={g}
-                            />
-                                        <Input
-                                                onChange={coctailInputChangeHandler}
-                                                onKeyPress={searchCoctailHandler}
-                                                value={searchCoctailInput}
-                                                placeholder={inputPlaceholder}
+                                        <Search
+                                            radiodata={RadioData}
+                                            inputdata={InputData}
                                         />
-                                        <Button text="qui"/>
-                                        <Form>
-                                            <RadioButton
-                                                label="ingredient"
-                                                checked={searchOption}
-                                                onChange={()=>{setSearchOption(true)}}
-                                            />
-                                            <RadioButton
-                                                label='name'
-                                                checked={!searchOption}
-                                                onChange={()=>{setSearchOption(false)}}
-                                            />
-                                        </Form>
-                                
                                         <ListingEl 
                                             className="ingredient-listing"
                                             listing={coctailList}
                                             prefix='strDrink'
                                             onClick={searchCoctail}
                                         />
-                                
                         </ContainerItemComp>
                         <ContainerItemComp className={'container-item_center'}>
                                 <Coctail
@@ -153,7 +139,6 @@ const Alco = () => {
                                     ingredients={ingridient}
                                     error={error}
                                 />
-                                
                         </ContainerItemComp>
                         <ContainerItemComp>
                                         <ListingEl 

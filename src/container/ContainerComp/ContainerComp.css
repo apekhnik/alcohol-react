@@ -3,9 +3,9 @@
     justify-content: space-around;
 
 }
-/* .container-item {
-    
-} */
+.container-item {
+   min-width: 300px; 
+}
 .container-item_center {
     max-width: 500px;
 }
