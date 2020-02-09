@@ -4,6 +4,11 @@
 	overflow-x: hidden;
 	padding: 0;
 }
+h2{
+	color: #e67e22;
+	margin-top: 0!important;
+	text-align: center;
+}
 .ingredient-listing::-webkit-scrollbar-thumb {
 	border-radius: 3px;
 	background-color: #e67e22;
@@ -19,6 +24,7 @@ ul{
 }
 .ingredient-listing ul li {
 	transition: all 0.6s;
+	list-style-type: armenian;
 }
 .ingredient-listing ul li:hover {
 	color: #e67e22;

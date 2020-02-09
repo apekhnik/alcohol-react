@@ -128,6 +128,7 @@ const Alco = () => {
                                             listing={coctailList}
                                             prefix='strDrink'
                                             onClick={searchCoctail}
+                                            title='Coctails list'
                                         />
                         </ContainerItemComp>
                         <ContainerItemComp className={'container-item_center'}>
@@ -147,6 +148,7 @@ const Alco = () => {
                                             listing={ingredientList}
                                             prefix='strIngredient'
                                             onClick={searchCoctailByIngredient}
+                                            title='Ingredients list'
                                         />
                         </ContainerItemComp>
                 </ContainerComp>
