@@ -1,18 +1,14 @@
 import React,{useState, useEffect} from 'react'
 import Loader from '../component/Loader/Loader'
 import Coctail from '../component/Сoctail/Coctail'
+import Button from '../component/Button/Button'
 import ContainerItemComp from '../container/ContainerItemComp/ContainerItemComp'
+import Input from '../component/Input/Input'
 import ContainerComp from './ContainerComp/ContainerComp'
+import Form from '../component/Form/Form'
+import RadioButton from '../component/RadioButton/RadioButton'
 import ListingEl from '../component/ListingEl/ListingEl'
 import Search from '../component/Search/Search'
-import {INGREDIENT_LISTING,
-    PREFIX_INGREDIENT,
-    PREFIX_DRINK,
-    INGREDIENT_TITLE,
-    COCTAIL_TITLE,
-    PLACEHOLDER_INGREDIENT,
-    PLACEHOLDER_NAME
-} from '../constants.js'
 const toJSON = response => response.json()
 
 const Alco = () => {
@@ -91,7 +87,7 @@ const Alco = () => {
         }
     }
     const ingridient = getIngredient(random)
-    const inputPlaceholder =  searchOption ? PLACEHOLDER_INGREDIENT : PLACEHOLDER_NAME
+    const inputPlaceholder =  searchOption ? 'Search coctail by ingredient' : 'Search coctail by name'
     const finalCoctailSearch = (input)=> {
         searchOption ? searchCoctailByIngredient(input) : searchCoctail(input)
     }
@@ -125,11 +121,11 @@ const Alco = () => {
                         <ContainerItemComp>
                                         
                                         <ListingEl 
-                                            className={INGREDIENT_LISTING}
+                                            className="ingredient-listing"
                                             listing={coctailList}
-                                            prefix={PREFIX_DRINK}
+                                            prefix='strDrink'
                                             onClick={searchCoctail}
-                                            title={COCTAIL_TITLE}
+                                            title='Coctails list'
                                         />
                         </ContainerItemComp>
                         <ContainerItemComp className={'container-item_center'}>
@@ -153,9 +149,9 @@ const Alco = () => {
                                         <ListingEl 
                                             className="ingredient-listing"
                                             listing={ingredientList}
-                                            prefix={PREFIX_INGREDIENT}
+                                            prefix='strIngredient'
                                             onClick={searchCoctailByIngredient}
-                                            title={INGREDIENT_TITLE}
+                                            title='Ingredients list'
                                         />
                         </ContainerItemComp>
                 </ContainerComp>
