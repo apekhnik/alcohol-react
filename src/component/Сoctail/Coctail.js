@@ -3,9 +3,10 @@ import './Coctail.css'
 import Visual from '../Visual/Visual'
 import Instructions from '../Instructions/Instructions'
 import Title from '../Title/Title'
-
-const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error}) => {
-    
+import classnames from 'classnames'
+const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error, onClickIngredient}) => {
+    const alco = alcoholic === 'Alcoholic' ? 'alco-coctail' : 'non-coctail'
+    const classes = classnames('coctail',alco)
     if(error) {
         return (
             <div className='coctail'>
@@ -13,16 +14,18 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error})
         </div>
         )
     }
-
+    
     return(
-        <div className='coctail'>
-            <Title name={name} 
-            description={alcoholic}/>
+        <div className={classes}>
+            <Title
+                name={name} 
+                description={alcoholic}/>
             <Visual
                 src={src}
                 title_ingridients='Ingredients'
                 ingredients={ingredients}
                 glass={glass}
+                onClick={onClickIngredient}
             />
 
 

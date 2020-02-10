@@ -118,11 +118,7 @@ const Alco = () => {
         <div className="application">
                 <ContainerComp>
                         <ContainerItemComp>
-                                        <Search
-                                            radiodata={RadioData}
-                                            inputdata={InputData}
-                                            error={error}
-                                        />
+                                        
                                         <ListingEl 
                                             className="ingredient-listing"
                                             listing={coctailList}
@@ -132,7 +128,12 @@ const Alco = () => {
                                         />
                         </ContainerItemComp>
                         <ContainerItemComp className={'container-item_center'}>
-                                <Coctail
+                                    <Search
+                                            radiodata={RadioData}
+                                            inputdata={InputData}
+                                            error={error}
+                                    />
+                                    <Coctail
                                     src={random.strDrinkThumb}
                                     name={random.strDrink}
                                     alcoholic={random.strAlcoholic}
@@ -140,6 +141,7 @@ const Alco = () => {
                                     instruction={random.strInstructions}
                                     ingredients={ingridient}
                                     error={error}
+                                    onClickIngredient={searchCoctailByIngredient}
                                 />
                         </ContainerItemComp>
                         <ContainerItemComp>
