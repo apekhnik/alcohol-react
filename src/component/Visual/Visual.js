@@ -2,7 +2,7 @@ import React from 'react'
 import Description from '../Description/Description'
 import Pictire from '../Picture/Picture'
 import Listing from '../Listing/Listing'
-const Visual = ({title_ingridients,ingredients, glass, src}) =>{
+const Visual = ({title_ingridients,ingredients, glass, src, onClick}) =>{
     console.log(glass)
     return (
         <div className='visual'>
@@ -12,8 +12,10 @@ const Visual = ({title_ingridients,ingredients, glass, src}) =>{
             </div>
             <div className="visual_item">
                 <Listing 
+                    onClick={onClick}
                     title={title_ingridients}
                     ingredients={ingredients}/>
+                    
             </div>
         </div>
     )

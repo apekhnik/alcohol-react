@@ -1,15 +1,16 @@
 import React from 'react'
-
-const ListingEl = ({listing, prefix, onClick}) => {
-    console.log(listing, prefix)
+import './ListingEl.css'
+const ListingEl = ({listing, prefix, onClick, className, title}) => {
     
     return (
-        <div>
+        <div className={className}>
+            <h2>{title}</h2>
+            <ul>
             {listing.map((item)=>{
             const gg = prefix==='strDrink' ? item.strDrink : item.strIngredient1
-            console.log(gg)
-            return <p onClick={()=>{onClick(gg)}}>{gg}</p>
+            return <li onClick={()=>{onClick(gg)}}>{gg}</li>
             })}
+            </ul>
         </div>
     )
 }
