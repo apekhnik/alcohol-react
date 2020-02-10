@@ -7,8 +7,8 @@ const ListingEl = ({listing, prefix, onClick, className, title}) => {
             <h2>{title}</h2>
             <ul>
             {listing.map((item)=>{
-            const gg = prefix==='strDrink' ? item.strDrink : item.strIngredient1
-            return <li onClick={()=>{onClick(gg)}}>{gg}</li>
+            const listItem = prefix==='strDrink' ? item.strDrink : item.strIngredient1
+            return <li onClick={()=>{onClick(listItem)}}>{listItem}</li>
             })}
             </ul>
         </div>

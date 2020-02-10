@@ -7,8 +7,8 @@ const Listing = ({title,ingredients, onClick}) =>{
             <h4>{title}</h4>
             
             {ingredients.map((item, index)=>{
-        return <p key={index+2} onClick={()=>onClick(item)}>{index+1}. {item}</p>
-        })}
+                return <p key={index+2} onClick={()=>onClick(item)}>{index+1}. {item}</p>
+            })}
             
         </div>
     )
