@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ListingEl.css'
-const ListingEl = ({listing, prefix, onClick, className, title}) => {
-    
+import {toJSON} from '../../constants'
+const ListingEl = ({listing, prefix, onClick, className, title, searchItems}) => {
+    const [spisok, setSpisok] = useState([])
+    const [searchDetail, setSearchDetail] = useState(false)
+    const getIngredientList = async () => {
+        const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+                        .then(toJSON)
+    setSpisok(ingList.drinks)
+    }
+    if(prefix==='strDrink'){
+        
+    }else {
+        getIngredientList()
+        
+    }
     return (
         <div className={className}>
             <h2>{title}</h2>
