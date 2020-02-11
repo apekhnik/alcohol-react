@@ -6,6 +6,17 @@
     box-sizing: border-box;
     padding: 10px;
 }
+.error-coctail {
+    max-width: 500px;
+    color: red;
+    border: 2px solid red;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    animation: alcoanim 3s ease-in-out infinite;
+    text-align: center;
+    position: absolute;
+}
 .alco-coctail {
     max-width: 500px;
     border: 2px solid #e74c3c;
@@ -77,6 +88,7 @@ ul{
 
 
 @keyframes alcoanim {
-    from {  transform: translateX(-5px);}
-    to { transform: translateX(5px); }
+    0% {  transform: scale(1.05);}
+    50% { transform: scale(1); }
+    100% { transform: scale(1.05)}
    }

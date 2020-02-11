@@ -25,17 +25,17 @@ const Alco = () => {
     const [error, setError] = useState(false)
     const [coctailList, setCoctailList] = useState([])
     const [searchOption, setSearchOption] = useState(true)
-
+    const [test, setTest] = useState('')
     useEffect(()=>{
         getRandomCoctail()
-        getIngredientList()
+        // getIngredientList()
         searchCoctailByIngredient()
     },[])
-    const getIngredientList = async () => {
-        const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
-                        .then(toJSON)
-        setIngredientLis(ingList.drinks)
-    }
+    // const getIngredientList = async () => {
+    //     const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+    //                     .then(toJSON)
+    //     setIngredientLis(ingList.drinks)
+    // }
 
     const getRandomCoctail = async () => {
         setLoading(true)
@@ -69,6 +69,7 @@ const Alco = () => {
         if (key === 'Enter') {
             finalCoctailSearch(searchCoctailInput)
             setSearchCoctailInput('')
+            setTest(searchCoctailInput)
         }
     }
     const searchCoctail = async (coctail) =>{
@@ -87,8 +88,9 @@ const Alco = () => {
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
                                 .then(toJSON)
             setCoctailList(response.drinks)
+            
         }catch(e){
-
+            console.log()
         }
     }
     const ingridient = getIngredient(random)
@@ -119,7 +121,7 @@ const Alco = () => {
     if(loading){
         return <Loader/>
     }
-    
+    console.log(searchOption)
     return(
         <div className="application">
                 <ContainerComp>
@@ -153,7 +155,7 @@ const Alco = () => {
                         <ContainerItemComp>
                                         <ListingEl 
                                             className={INGREDIENT_LISTING}
-                                            listing={ingredientList}
+                                            listing
                                             prefix={PREFIX_INGREDIENT}
                                             onClick={searchCoctailByIngredient}
                                             title={INGREDIENT_TITLE}

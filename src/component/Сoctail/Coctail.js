@@ -1,5 +1,6 @@
 import React from 'react'
 import './Coctail.css'
+import Error from '../ErrorComponent/Error'
 import Visual from '../Visual/Visual'
 import Instructions from '../Instructions/Instructions'
 import Title from '../Title/Title'
@@ -9,9 +10,7 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error, 
     const classes = classnames('coctail',alco)
     if(error) {
         return (
-            <div className='coctail'>
-            <h1>Не найден </h1>
-        </div>
+            <Error/>
         )
     }
     
