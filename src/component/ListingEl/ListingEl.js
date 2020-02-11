@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './ListingEl.css'
 import Loader from '../Loader/Loader'
 import {toJSON} from '../../constants'
+import ListingItem from '../ListingItem/ListingItem'
+import Title from '../Title/Title'
 const ListingEl = ({listing, prefix, onClick, className, title}) => {
     const [spisok, setSpisok] = useState([])
 
@@ -35,11 +37,17 @@ const ListingEl = ({listing, prefix, onClick, className, title}) => {
     
     return (
         <div className={className}>
-            <h2>{title}</h2>
+            <Title
+                name={title}
+            />
             <ul>
             {listing.map((item)=>{
-            const listItem = prefix==='strDrink' ? item.strDrink : item.strIngredient1
-            return <li onClick={()=>{onClick(listItem)}}>{listItem}</li>
+                    const listItem = prefix==='strDrink' ? item.strDrink : item.strIngredient1
+            
+                return <ListingItem
+                        item={listItem}
+                        onClick={()=>{onClick(listItem)}}
+            />
             })}
             </ul>
         </div>
