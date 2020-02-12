@@ -14,6 +14,7 @@ import {
     PLACEHOLDER_INGREDIENT,
     PLACEHOLDER_NAME,
     INGREDIENT_TITLE_DESCRIPTION,
+    COCTAIL_LISTING_DESCRIPTION,
     toJSON
 } from '../constants.js'
 
@@ -134,6 +135,7 @@ const Alco = () => {
                                             prefix={PREFIX_DRINK}
                                             onClick={searchCoctail}
                                             title={COCTAIL_TITLE}
+                                            description={COCTAIL_LISTING_DESCRIPTION}
                                         />
                         </ContainerItemComp>
                         <ContainerItemComp className={'container-item_center'}>

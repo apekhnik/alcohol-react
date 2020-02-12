@@ -3,6 +3,9 @@
     justify-content: space-around;
     height: 100vh;
     padding-top: 30px;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: hidden;
 }
 .container-item {
    min-width: 300px; 

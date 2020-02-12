@@ -7,4 +7,5 @@ export const INGREDIENT_TITLE = 'Список ингредиентов';
 export const PLACEHOLDER_NAME = 'Search coctail by name';
 export const PLACEHOLDER_INGREDIENT = 'Search coctail by ingredient';
 export const toJSON = response => response.json();
-export const INGREDIENT_TITLE_DESCRIPTION = 'при клике отображается список коктелей с данным ингредиентом';
+export const INGREDIENT_TITLE_DESCRIPTION = 'При клике по обьекту отображается список коктелей с выбранным ингредиентом';
+export const COCTAIL_LISTING_DESCRIPTION = 'При клике по обьекту отображается выбранный напиток'

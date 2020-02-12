@@ -1,5 +1,5 @@
 .ingredient-listing {
-    max-height: 500px;
+    max-height: 80vh;
     overflow: scroll;
 	overflow-x: hidden;
 	padding: 0;
@@ -38,15 +38,30 @@ ul{
 	left: -20px;
 	background:#282c34;
 	width: 350px;
-	text-align: left;
+	text-align: left!important;
+	line-height: 20px;
 }
 .fixed h2 {
 	font-size: 25px;
+	margin-bottom: 25px;
+	position: relative;
+}
+.fixed h2:after{
+	content: '';
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 50px;
+	background:white;
+	left: 46%;
+	top: 35px;
 }
 .fixed span {
-	color: red;
+	color: #e67e22;
 	margin-left: 15px;
 	font-size: 14px;
+	line-height: 10px;
+	
 }
 .ingredient-listing ul li:hover {
 	color: #e67e22;
