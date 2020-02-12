@@ -1,7 +1,7 @@
 .non-coctail {
     max-width: 500px;
     color: #3498db;
-    border: 2px solid #3498db;
+
     border-radius: 10px;
     box-sizing: border-box;
     padding: 0;
@@ -9,32 +9,40 @@
 .error-coctail {
     max-width: 400px;
     color: red;
-    border: 2px solid red;
+
     border-radius: 10px;
     box-sizing: border-box;
     padding: 0;
     animation: alcoanim 3s ease-in-out infinite;
     text-align: center;
     position: absolute;
+
 }
 .alco-coctail {
     max-width: 500px;
-    border: 2px solid #e74c3c;
     color: #e74c3c;
     border-radius: 10px;
     box-sizing: border-box;
     padding: 0;
 }
 .coctail {
-    padding-bottom: 5px;
+    padding: 20px;
+    border-radius: 50px;
+background: linear-gradient(145deg, #2b2f38, #24282f);
+box-shadow:  30px 30px 56px #1a1d22, 
+             -30px -30px 56px #363b46;
 }
 .coctail h2{
     font-family: 'Montserrat Subrayada', sans-serif;
     margin: 0;
+    font-size: 30px;
 }
 .coctail .listing p{
     margin: 0;
     font-size: 18px;
+}
+.coctail  span {
+    color: white;
 }
 .coctail span {
     font-size: 18px;
@@ -47,10 +55,14 @@
     font-size: 14px;
     font-family: 'Lemonada', cursive;
 }
+.listing h4 {
+    font-size: 22px;
+}
 .instructions span {
     display: block;
     margin-bottom: 10px;
     margin-top: 5px;
+    color: white;
 }
 .minimize {
     max-width: 500px;
