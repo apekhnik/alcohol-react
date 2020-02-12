@@ -10,6 +10,10 @@
 .container-item {
    min-width: 300px; 
    max-height: 80vh;
+   /* border-radius: 50px;
+background: #282c34;
+box-shadow: inset -13px -13px 26px #1a1d22, 
+            inset 13px 13px 26px #363b46; */
 }
 .container-item_center {
     max-width: 500px;

@@ -1,18 +1,20 @@
 .button {
+   
+}
+.button  {
     position: absolute;
     right: 0;
-    height: 22px;
+    height: 32px;
     width: 60px;
-}
-.button button {
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    border: 1px solid #e67e22;
+    border-radius: 12px;
+background: linear-gradient(145deg, #cf711f, #f68724);
+box-shadow:  5px 5px 10px #b1611a, 
+             -5px -5px 10px #ff9b2a;;
     color: #e67e22;
-    border-radius: 3px;
     outline: none;
+    border: transparent;
     transition: all 0.3s;
+    font-family: 'Lemonada', cursive;
 }
 .button button:active {
     background: #e67e22;

@@ -58,6 +58,9 @@ box-shadow:  30px 30px 56px #1a1d22,
 .listing h4 {
     font-size: 22px;
 }
+.listing p {
+
+}
 .instructions span {
     display: block;
     margin-bottom: 10px;
@@ -110,7 +113,7 @@ h2{
     margin: 5px;
 }
 .visual_item p:hover {
-	color: #e67e22;
+	color: white;
 }
 .visual_item p:active {
 	color: black
