@@ -13,6 +13,7 @@ import {
     COCTAIL_TITLE,
     PLACEHOLDER_INGREDIENT,
     PLACEHOLDER_NAME,
+    INGREDIENT_TITLE_DESCRIPTION,
     toJSON
 } from '../constants.js'
 
@@ -159,6 +160,7 @@ const Alco = () => {
                                             prefix={PREFIX_INGREDIENT}
                                             onClick={searchCoctailByIngredient}
                                             title={INGREDIENT_TITLE}
+                                            description={INGREDIENT_TITLE_DESCRIPTION}
                                         />
                         </ContainerItemComp>
                 </ContainerComp>

@@ -3,7 +3,8 @@
     overflow: scroll;
 	overflow-x: hidden;
 	padding: 0;
-	padding-left: 25px;
+	padding-left: 0;
+	position: relative;
 }
 .ingredient-listing h2{
 	color: #e67e22;
@@ -27,6 +28,25 @@ ul{
 .ingredient-listing ul li {
 	transition: all 0.6s;
 	font-size: 16px;
+	padding: 5px;
+	margin-bottom: 3px;
+	margin-left: 25px;
+}
+.fixed {
+	position: sticky;
+	top: 0;
+	left: -20px;
+	background:#282c34;
+	width: 350px;
+	text-align: left;
+}
+.fixed h2 {
+	font-size: 25px;
+}
+.fixed span {
+	color: red;
+	margin-left: 15px;
+	font-size: 14px;
 }
 .ingredient-listing ul li:hover {
 	color: #e67e22;

@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader'
 import {toJSON} from '../../constants'
 import ListingItem from '../ListingItem/ListingItem'
 import Title from '../Title/Title'
-const ListingEl = ({listing, prefix, onClick, className, title}) => {
+const ListingEl = ({listing, prefix, onClick, className, title, description}) => {
     const [spisok, setSpisok] = useState([])
 
     const [loading, setLoading] = useState(false)
@@ -39,11 +39,12 @@ const ListingEl = ({listing, prefix, onClick, className, title}) => {
         <div className={className}>
             <Title
                 name={title}
+                className='fixed'
+                description={description}
             />
             <ul>
             {listing.map((item)=>{
                     const listItem = prefix==='strDrink' ? item.strDrink : item.strIngredient1
-            
                 return <ListingItem
                         item={listItem}
                         onClick={()=>{onClick(listItem)}}
