@@ -6,9 +6,11 @@ const Listing = ({title,ingredients, onClick}) =>{
         <div className="listing">
             <h4>{title}</h4>
             
+            <div className='p-container'>
             {ingredients.map((item, index)=>{
                 return <p key={index+2} onClick={()=>onClick(item)}>{index+1}. {item}</p>
             })}
+            </div>
             
         </div>
     )

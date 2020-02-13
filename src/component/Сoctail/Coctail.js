@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Coctail.css'
 import Error from '../ErrorComponent/Error'
 import Visual from '../Visual/Visual'
 import Instructions from '../Instructions/Instructions'
 import Title from '../Title/Title'
+import DotLoader from '../DotLoader/DotLoader'
+// import {
+//     CSSTransition,
+//     TransitionGroup,
+//   } from 'react-transition-group';
 import classnames from 'classnames'
-const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error, onClickIngredient}) => {
+const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error, onClickIngredient, reload}) => {
     const alco = alcoholic === 'Alcoholic' ? 'alco-coctail' : 'non-coctail'
     const classes = classnames('coctail',alco)
     if(error) {
@@ -13,10 +18,17 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error, 
             <Error/>
         )
     }
-    
+    if(reload) {
+        return (
+            <div className=" fake-coctail coctail">
+                <DotLoader/>
+            </div>
+        )
+    }
     return(
         <div className={classes}>
-            <Title
+               
+                <Title
                 name={name} 
                 description={alcoholic}/>
             <Visual
@@ -26,8 +38,6 @@ const Coctail = ({src, name, alcoholic, glass, instruction, ingredients, error, 
                 glass={glass}
                 onClick={onClickIngredient}
             />
-
-
             <Instructions
                 title='Instruction:'
                 instruction={instruction}

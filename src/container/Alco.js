@@ -27,7 +27,7 @@ const Alco = () => {
     const [error, setError] = useState(false)
     const [coctailList, setCoctailList] = useState([])
     const [searchOption, setSearchOption] = useState(true)
-    const [test, setTest] = useState('')
+    const [coctailReload, setCoctailReload] = useState(false)
     useEffect(()=>{
         getRandomCoctail()
         // getIngredientList()
@@ -71,15 +71,16 @@ const Alco = () => {
         if (key === 'Enter') {
             finalCoctailSearch(searchCoctailInput)
             setSearchCoctailInput('')
-            setTest(searchCoctailInput)
         }
     }
     const searchCoctail = async (coctail) =>{
+        setCoctailReload(true)
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctail}`)
                                 .then(toJSON)
         setRandom(response.drinks[0])
         setError(false)
+        setCoctailReload(false)
         }catch(e){
             setError(true)
 
@@ -153,6 +154,7 @@ const Alco = () => {
                                     ingredients={ingridient}
                                     error={error}
                                     onClickIngredient={searchCoctailByIngredient}
+                                    reload={coctailReload}
                                 />
                         </ContainerItemComp>
                         <ContainerItemComp>
