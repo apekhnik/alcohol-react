@@ -3,7 +3,6 @@ import Description from '../Description/Description'
 import Pictire from '../Picture/Picture'
 import Listing from '../Listing/Listing'
 const Visual = ({title_ingridients,ingredients, glass, src, onClick}) =>{
-    console.log(glass)
     return (
         <div className='visual'>
             <div className="visual_item">

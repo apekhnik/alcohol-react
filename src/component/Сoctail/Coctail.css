@@ -1,21 +1,95 @@
 .non-coctail {
     max-width: 500px;
     color: #3498db;
-    border: 2px solid #3498db;
+
     border-radius: 10px;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 0;
+}
+.error-coctail {
+    max-width: 400px;
+    color: red;
+
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 0;
+    animation: alcoanim 3s ease-in-out infinite;
+    text-align: center;
+    position: absolute;
+
 }
 .alco-coctail {
     max-width: 500px;
-    border: 2px solid #e74c3c;
     color: #e74c3c;
     border-radius: 10px;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 0;
 }
 .coctail {
+    padding: 20px;
+    border-radius: 50px;
+background: linear-gradient(145deg, #2b2f38, #24282f);
+box-shadow:  30px 30px 56px #1a1d22, 
+             -30px -30px 56px #363b46;
+}
+.coctail h2{
+    font-family: 'Montserrat Subrayada', sans-serif;
+    margin: 0;
+    font-size: 30px;
+    animation:  forTitle 2s ease-in-out;
+}
+.coctail .listing p{
+    margin: 0;
     font-size: 18px;
+    
+    
+}
+.p-container p {
+    opacity: 1;
+    animation: opacity 1s linear;
+}
+.p-container p:nth-child(1){
+    /* animation-duration: 2s;
+    animation-delay: 1s; */
+}
+.p-container p:nth-child(2){
+    /* animation-duration: 3s;     */
+}
+.p-container p:nth-child(3){
+    /* animation-duration: 4s; */
+}
+.p-container p:nth-child(4){
+    /* animation-duration: 5s; */
+}
+.p-container p:nth-child(5){
+    /* animation-duration: 6s; */
+}
+.coctail  span {
+    color: white;
+}
+.coctail span {
+    font-size: 18px;
+}
+.instructions {
+    line-height: 20px;
+}
+.instructions p {
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Lemonada', cursive;
+}
+.listing h4 {
+    font-size: 22px;
+}
+.listing p {
+    font-family: 'Sriracha', cursive;
+    font-size: 14px;
+}
+.instructions span {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    color: white;
 }
 .minimize {
     max-width: 500px;
@@ -63,7 +137,8 @@ h2{
     margin: 5px;
 }
 .visual_item p:hover {
-	color: #e67e22;
+    color: white;
+    cursor: pointer;
 }
 .visual_item p:active {
 	color: black
@@ -72,11 +147,55 @@ ul{
     list-style-type: none;
     text-align: left;
 }
+.fake-coctail {
+    width: 450px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
-
+.item-enter {
+    opacity: 0;
+  }
+  .item-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .item-exit {
+    opacity: 1;
+  }
+  .item-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+  }
 
 @keyframes alcoanim {
-    from {  transform: translateX(-5px);}
-    to { transform: translateX(5px); }
+    0% {  transform: scale(1.05);}
+    50% { transform: scale(1); }
+    100% { transform: scale(1.05)}
    }
+   @keyframes forTitle {
+    0%{
+    
+        transform: scale(0);
+    }
+    25%{
+        transform: scale(1.2);
+    }
+    50%{
+        transform: scale(0.9);
+    }
+    75%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+   @keyframes opacity {
+    0% { opacity: 0;}
+    
+    100% { opacity: 1;}
+   }
+  

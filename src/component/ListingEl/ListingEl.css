@@ -1,9 +1,10 @@
 .ingredient-listing {
-    max-height: 500px;
+    max-height: 80vh;
     overflow: scroll;
 	overflow-x: hidden;
 	padding: 0;
-	padding-left: 25px;
+	padding-left: 0;
+	position: relative;
 }
 .ingredient-listing h2{
 	color: #e67e22;
@@ -27,6 +28,44 @@ ul{
 .ingredient-listing ul li {
 	transition: all 0.6s;
 	font-size: 16px;
+	padding: 5px;
+	margin-bottom: 3px;
+	margin-left: 25px;
+	font-family: 'Sriracha', cursive;
+	line-height: 16px;
+}
+.fixed {
+	position: sticky;
+	top: 0;
+	left: -20px;
+	background:#282c34;
+	width: 350px;
+	text-align: left!important;
+	line-height: 20px;
+}
+.fixed h2 {
+	font-size: 25px;
+	margin-bottom: 25px;
+	position: relative;
+	font-family: 'Lemonada', cursive;
+}
+.fixed h2:after{
+	content: '';
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 50px;
+	background:white;
+	left: 46%;
+	top: 35px;
+}
+.fixed span {
+	color: #e67e22;
+	margin-left: 15px;
+	font-size: 14px;
+	line-height: 10px;
+	font-family: 'Lemonada', cursive;
+	
 }
 .ingredient-listing ul li:hover {
 	color: #e67e22;

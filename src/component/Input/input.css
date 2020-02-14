@@ -5,7 +5,7 @@
     height: 30px;
     color: #e67e22;
     padding: 5px;
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Sriracha', cursive;
     font-size: 18px;
 }
 .input-error {
@@ -17,7 +17,7 @@
 input::-webkit-input-placeholder {
     color: #e67e22;
     padding: 5px;
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Sriracha', cursive;
     font-size: 20px;
 }
  

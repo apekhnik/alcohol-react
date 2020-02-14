@@ -25,7 +25,10 @@ const Search = ({radiodata,inputdata, error}) => {
                         />
             })}
             <Button
-                onClick={()=>{inputdata.onClick(inputdata.value);inputdata.clear('')}}
+                onClick={()=>{
+                    inputdata.onClick(inputdata.value);
+                    inputdata.clear('')
+                }}
             />
             </Form>
         </div>

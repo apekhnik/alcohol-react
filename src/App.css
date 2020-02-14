@@ -12,7 +12,7 @@
 
 .App{
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,10 @@
   color: white;
   margin: 0;
 }
-
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
 .App-link {
   color: #61dafb;
 }
@@ -36,4 +39,5 @@
 }
 .application {
   width: 100%;
+  height: 100vh;
 }

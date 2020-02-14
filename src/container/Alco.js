@@ -5,15 +5,19 @@ import ContainerItemComp from '../container/ContainerItemComp/ContainerItemComp'
 import ContainerComp from './ContainerComp/ContainerComp'
 import ListingEl from '../component/ListingEl/ListingEl'
 import Search from '../component/Search/Search'
-import {INGREDIENT_LISTING,
+import {
+    INGREDIENT_LISTING,
     PREFIX_INGREDIENT,
     PREFIX_DRINK,
     INGREDIENT_TITLE,
     COCTAIL_TITLE,
     PLACEHOLDER_INGREDIENT,
-    PLACEHOLDER_NAME
+    PLACEHOLDER_NAME,
+    INGREDIENT_TITLE_DESCRIPTION,
+    COCTAIL_LISTING_DESCRIPTION,
+    toJSON
 } from '../constants.js'
-const toJSON = response => response.json()
+
 
 const Alco = () => {
     const [random, setRandom] = useState({})
@@ -23,17 +27,17 @@ const Alco = () => {
     const [error, setError] = useState(false)
     const [coctailList, setCoctailList] = useState([])
     const [searchOption, setSearchOption] = useState(true)
-
+    const [coctailReload, setCoctailReload] = useState(false)
     useEffect(()=>{
         getRandomCoctail()
-        getIngredientList()
-        searchCoctailByIngredient('gin')
+        // getIngredientList()
+        searchCoctailByIngredient()
     },[])
-    const getIngredientList = async () => {
-        const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
-                        .then(toJSON)
-        setIngredientLis(ingList.drinks)
-    }
+    // const getIngredientList = async () => {
+    //     const ingList =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+    //                     .then(toJSON)
+    //     setIngredientLis(ingList.drinks)
+    // }
 
     const getRandomCoctail = async () => {
         setLoading(true)
@@ -70,11 +74,13 @@ const Alco = () => {
         }
     }
     const searchCoctail = async (coctail) =>{
+        setCoctailReload(true)
         try{
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctail}`)
                                 .then(toJSON)
         setRandom(response.drinks[0])
         setError(false)
+        setCoctailReload(false)
         }catch(e){
             setError(true)
 
@@ -85,8 +91,9 @@ const Alco = () => {
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
                                 .then(toJSON)
             setCoctailList(response.drinks)
+            
         }catch(e){
-
+            console.log()
         }
     }
     const ingridient = getIngredient(random)
@@ -117,7 +124,7 @@ const Alco = () => {
     if(loading){
         return <Loader/>
     }
-    
+    console.log(searchOption)
     return(
         <div className="application">
                 <ContainerComp>
@@ -129,6 +136,7 @@ const Alco = () => {
                                             prefix={PREFIX_DRINK}
                                             onClick={searchCoctail}
                                             title={COCTAIL_TITLE}
+                                            description={COCTAIL_LISTING_DESCRIPTION}
                                         />
                         </ContainerItemComp>
                         <ContainerItemComp className={'container-item_center'}>
@@ -146,15 +154,17 @@ const Alco = () => {
                                     ingredients={ingridient}
                                     error={error}
                                     onClickIngredient={searchCoctailByIngredient}
+                                    reload={coctailReload}
                                 />
                         </ContainerItemComp>
                         <ContainerItemComp>
                                         <ListingEl 
-                                            className="ingredient-listing"
-                                            listing={ingredientList}
+                                            className={INGREDIENT_LISTING}
+                                            listing
                                             prefix={PREFIX_INGREDIENT}
                                             onClick={searchCoctailByIngredient}
                                             title={INGREDIENT_TITLE}
+                                            description={INGREDIENT_TITLE_DESCRIPTION}
                                         />
                         </ContainerItemComp>
                 </ContainerComp>
