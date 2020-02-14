@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/alcohol-react/static/css/main.8a63feb0.chunk.css",
+    "main.js": "/alcohol-react/static/js/main.39504f39.chunk.js",
+    "main.js.map": "/alcohol-react/static/js/main.39504f39.chunk.js.map",
+    "runtime-main.js": "/alcohol-react/static/js/runtime-main.fd2477e5.js",
+    "runtime-main.js.map": "/alcohol-react/static/js/runtime-main.fd2477e5.js.map",
+    "static/js/2.8cf45503.chunk.js": "/alcohol-react/static/js/2.8cf45503.chunk.js",
+    "static/js/2.8cf45503.chunk.js.map": "/alcohol-react/static/js/2.8cf45503.chunk.js.map",
+    "index.html": "/alcohol-react/index.html",
+    "precache-manifest.5440637bcfc28bfa60dee9b2f73d69db.js": "/alcohol-react/precache-manifest.5440637bcfc28bfa60dee9b2f73d69db.js",
+    "service-worker.js": "/alcohol-react/service-worker.js",
+    "static/css/main.8a63feb0.chunk.css.map": "/alcohol-react/static/css/main.8a63feb0.chunk.css.map",
+    "static/js/2.8cf45503.chunk.js.LICENSE": "/alcohol-react/static/js/2.8cf45503.chunk.js.LICENSE",
+    "static/media/logo.svg": "/alcohol-react/static/media/logo.ee7cd8ed.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fd2477e5.js",
+    "static/js/2.8cf45503.chunk.js",
+    "static/css/main.8a63feb0.chunk.css",
+    "static/js/main.39504f39.chunk.js"
+  ]
+}
