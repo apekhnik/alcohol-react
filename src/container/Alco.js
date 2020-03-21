@@ -17,20 +17,22 @@ import {
     COCTAIL_LISTING_DESCRIPTION,
     NUM_FOR_SUBSTR_INGREDIENT,
     NULL_FOR_SUBSTR_INGREDIENT,
-    toJSON
+    CONTAINER_ITEM_CENTER,
+    DEFAULT_COCTAIL_LIST,
+    DEAFULT_COCTAIL
 } from '../constants.js'
 
-
+const toJSON = response => response.json();
 const Alco = () => {
-    const [coctail, setCoctail] = useState({})
+    const [coctail, setCoctail] = useState(DEAFULT_COCTAIL)
     const [loading, setLoading] = useState(false)
     const [searchCoctailInput, setSearchCoctailInput] = useState('')
     const [error, setError] = useState(false)
-    const [coctailList, setCoctailList] = useState([])
+    const [coctailList, setCoctailList] = useState(DEFAULT_COCTAIL_LIST)
     const [searchOption, setSearchOption] = useState(true)
     const [coctailReload, setCoctailReload] = useState(false)
 
-   
+
     
     useEffect(()=>{
         setRandomCoctail()
@@ -44,6 +46,7 @@ const Alco = () => {
             const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
                                         .then(toJSON)
             setCoctail(response.drinks[0])
+            console.log(response.drinks[0])
             setTimeout(()=>{setLoading(false)}, 1500)
        }catch(e){
             console.log(e);
@@ -134,7 +137,7 @@ const Alco = () => {
                                             description={COCTAIL_LISTING_DESCRIPTION}
                                         />
                         </ContainerItemComp>
-                        <ContainerItemComp className={'container-item_center'}>
+                        <ContainerItemComp className={CONTAINER_ITEM_CENTER}>
                                     <Search
                                             radiodata={RadioData}
                                             inputdata={InputData}

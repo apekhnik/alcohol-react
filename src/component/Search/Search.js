@@ -17,11 +17,12 @@ const Search = ({radiodata,inputdata, error}) => {
             />
             
             <Form>
-            {radiodata.map((item)=>{
+            {radiodata.map((item, index)=>{
                 return <RadioButton
                             label={item.label}
                             checked={item.checked}
                             onChange={item.onChange}
+                            key={index}
                         />
             })}
             <Button
